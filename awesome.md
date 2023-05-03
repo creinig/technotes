@@ -43,3 +43,14 @@
 * [String Manipulation](https://plugins.jetbrains.com/plugin/2162-string-manipulation)
 * [Window Layout Manager](https://plugins.jetbrains.com/plugin/13005-window-layout-manager)
 
+## Gnome Extensions
+
+* [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/) -- clipboard history
+* [Focus](https://extensions.gnome.org/extension/3924/focus/) -- turns inactive windows transparent
+* [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/) -- lots of UI tweaks
+* [PIP on Top](https://extensions.gnome.org/extension/4691/pip-on-top/) -- make firefox PIP windows always on top
+* [Run or Raise](https://extensions.gnome.org/extension/1336/run-or-raise/) -- keyboard shortcuts for accessing my most common applications
+* [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) -- invaluable when working with a docking station
+* [System Monitor Next](https://extensions.gnome.org/extension/3010/system-monitor-next/) -- load graphs in the status bar
+* [Time++](https://extensions.gnome.org/extension/1238/time/) -- todo.txt manager, stopwatch & more
+
