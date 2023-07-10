@@ -11,6 +11,7 @@
 
 * [bat](https://github.com/sharkdp/bat)
 * [ugrep](https://github.com/Genivia/ugrep)
+* [mitmproxy](https://mitmproxy.org/) -- HTTP(S) proxy that allows sniffing & modification of traffic - plain and encrypted
 
 ## Linux general
 
