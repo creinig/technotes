@@ -52,5 +52,6 @@
 * [Run or Raise](https://extensions.gnome.org/extension/1336/run-or-raise/) -- keyboard shortcuts for accessing my most common applications
 * [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/) -- invaluable when working with a docking station
 * [System Monitor Next](https://extensions.gnome.org/extension/3010/system-monitor-next/) -- load graphs in the status bar
-* [Time++](https://extensions.gnome.org/extension/1238/time/) -- todo.txt manager, stopwatch & more
+* [Tactile](https://extensions.gnome.org/extension/4548/tactile/) -- simple yet flexible keyboard driven window tiling
+
 
