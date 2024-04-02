@@ -14,3 +14,7 @@ Only copy first 20 minutes of file: `ffmpeg -t 00:20:00 -i input.opus output.opu
 ## ugrep
 
 * Find string recursively in all files, including archives and binary files (e.g. .jar and .class): `ug --decompress --recursive --with-hex "some_string_or_pattern"`
+
+## General
+
+* Get my current public IP address: `curl -4 ifconfig.co` / `curl -6 ifconfig.co` 
