@@ -2,7 +2,7 @@
 
 ## SQL statements by execution time (requires pg_stat_statements extension!)
 
-```
+```sql
 SELECT query, calls, total_time, max_time, mean_time, "rows"
 FROM pg_stat_statements
 WHERE (dbid IN (SELECT OID FROM pg_database WHERE datname = current_database()))
@@ -11,7 +11,7 @@ ORDER BY total_time DESC;
 
 ## Active Sessions
 
-```
+```sql
 SELECT usename,application_name,client_addr,client_hostname,query_start,
        (NOW() - query_start) AS query_age,wait_event_type,wait_event,state,query
   FROM pg_stat_activity
@@ -20,7 +20,7 @@ SELECT usename,application_name,client_addr,client_hostname,query_start,
 
 ## Database Statistics
 
-```
+```sql
 select *, pg_size_pretty(temp_bytes) from pg_stat_database where (datname = current_user);
 ```
 
@@ -28,7 +28,7 @@ select *, pg_size_pretty(temp_bytes) from pg_stat_database where (datname = curr
 
 Run as superuser for info on all databases.
 
-```
+```sql
 select t1.datname AS db_name, 
        pg_size_pretty(pg_database_size(t1.datname)) as db_size
 from pg_database t1
@@ -37,13 +37,13 @@ order by pg_database_size(t1.datname) desc;
 
 ## Current Conflicts
 
-```
+```sql
 select * from pg_stat_database_conflicts where (datname = current_user);
 ```
 
 ## Table Size, Dead Rows & (Auto)Vacuum, partitioning safe
 
-```
+```sql
 SELECT schemaname as "schema", relbasename as "table", count(*) as npart,
     sum(n_live_tup) as nlivetuples, sum(n_dead_tup) as ndeadtuples,
     max(last_autovacuum) as last_autovacuum, max(last_vacuum) as last_vacuum,
@@ -74,7 +74,7 @@ ORDER BY sum(n_dead_tup)
 
 ## Progress of running vacuum jobs
 
-```
+```sql
 -- run as superuser to get meaningful info!
 SELECT v.pid, v.datname, relid, phase,
        heap_blks_total, heap_blks_scanned, heap_blks_vacuumed,
@@ -87,7 +87,7 @@ WHERE (v.pid = a.pid);
 
 ## SSL information on current connections
 
-```
+```sql
 select s.*, a.usename, a.application_name, a.client_addr, a.backend_type from pg_stat_ssl s, pg_stat_activity a where (s.pid = a.pid);
 ```
 
