@@ -31,6 +31,7 @@
 * [Stylish](https://addons.mozilla.org/en-GB/firefox/addon/stylish/)
 * [Tree Style Tab](https://addons.mozilla.org/en-GB/firefox/addon/tree-style-tab/)
 * [uBlock Origin](https://addons.mozilla.org/en-GB/firefox/addon/ublock-origin/)
+* [Print Friendly & PDF](https://addons.mozilla.org/en-US/firefox/addon/print-friendly-pdf/)
 * [Web Developer](https://addons.mozilla.org/en-GB/firefox/addon/web-developer/)
 
 ## IntelliJ Addons
