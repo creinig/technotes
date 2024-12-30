@@ -12,10 +12,10 @@ ORDER BY total_time DESC;
 ## Active Sessions
 
 ```sql
-SELECT usename,application_name,client_addr,client_hostname,query_start,
+SELECT pid,usename,application_name,client_addr,client_hostname,query_start,
        (NOW() - query_start) AS query_age,wait_event_type,wait_event,state,query
   FROM pg_stat_activity
-  WHERE datname = (CURRENT_USER) AND   state <> 'idle';
+  WHERE datname = 'mydatabase' AND   state <> 'idle';
 ```
 
 ## Database Statistics
@@ -70,6 +70,29 @@ ORDER BY sum(n_dead_tup)
           + current_setting('autovacuum_vacuum_threshold')::float8)
      DESC,
      sum(total_bytes) desc;
+```
+
+## Analyze all tables in a given schema
+
+From https://stackoverflow.com/a/42689285/1814922
+
+```sql
+DO $$
+DECLARE
+  tab RECORD;
+  schemaName VARCHAR := 'your_schema';
+BEGIN
+  for tab in (select t.relname::varchar AS table_name
+                FROM pg_class t
+                JOIN pg_namespace n ON n.oid = t.relnamespace
+                WHERE t.relkind = 'r' and n.nspname::varchar = schemaName
+                order by 1)
+  LOOP
+    RAISE NOTICE 'ANALYZE %.%', schemaName, tab.table_name;
+    EXECUTE format('ANALYZE %I.%I', schemaName, tab.table_name);
+  end loop;
+end
+$$;
 ```
 
 ## Progress of running vacuum jobs
