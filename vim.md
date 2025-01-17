@@ -20,3 +20,14 @@ v                               |
 +-------------------------------+
 ```
 
+## Navigating buffers
+
+```
+:bp[rev] <-- :b <Tab> | :b<n>  --> :bn[ext]
+
+previous     choose   | select     next
+```
+
+* :bd[elete] : close buffer
+* :ls : list buffers
+
