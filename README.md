@@ -4,6 +4,8 @@ All kinds of technical documentation for myself and (hopefully) others
 * [My personal Awesome List](awesome.md)
 * PostgreSQL info
   * [Diagnostics Queries](postgres/diagnostics-queries.md)
+* [Useful Vim Tips](vim.md)
+* [Misc Commandline Snippets](snippets.md)
 
 ## Incoming stuff (to be properly sorted later)
 
