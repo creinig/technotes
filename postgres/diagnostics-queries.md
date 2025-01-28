@@ -35,6 +35,29 @@ from pg_database t1
 order by pg_database_size(t1.datname) desc;
 ```
 
+## Schema sizes
+
+```sql
+WITH schemas AS (
+    SELECT
+        nspname,
+        sum(pg_relation_size(pg_class.oid)) AS schemasize
+    FROM
+        pg_class
+        INNER JOIN pg_namespace ON relnamespace = pg_namespace.oid
+    GROUP BY
+        nspname
+)
+SELECT
+    nspname,
+    pg_size_pretty(schemasize)
+FROM
+    schemas
+ORDER BY
+    schemasize DESC;
+```
+
+
 ## Current Conflicts
 
 ```sql
@@ -112,5 +135,25 @@ WHERE (v.pid = a.pid);
 
 ```sql
 select s.*, a.usename, a.application_name, a.client_addr, a.backend_type from pg_stat_ssl s, pg_stat_activity a where (s.pid = a.pid);
+```
+
+## Grant / Permission / User diagnostics
+
+psql metacommands:
+
+* `\dp` : List privileges
+* `\ddp` : list default privileges
+
+List all users and their privileges for a table (from https://stackoverflow.com/a/42108936/1814922):
+
+```sql
+select a.schemaname, a.tablename, b.usename,
+      HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) || '.' || quote_ident(tablename), 'select') as has_select,
+      HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) || '.' || quote_ident(tablename), 'insert') as has_insert,
+      HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) || '.' || quote_ident(tablename), 'update') as has_update,
+      HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) || '.' || quote_ident(tablename), 'delete') as has_delete, 
+      HAS_TABLE_PRIVILEGE(usename, quote_ident(schemaname) || '.' || quote_ident(tablename), 'references') as has_references 
+    from pg_tables a, pg_user b 
+where a.schemaname = 'your_schema_name' and a.tablename='your_table_name';
 ```
 
