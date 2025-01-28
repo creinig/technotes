@@ -3,7 +3,6 @@
 
 ## Linux GUI
 
-* [Run or Raise](https://extensions.gnome.org/extension/1336/run-or-raise/)
 * [stretchly](https://hovancik.net/stretchly/)
 * [screenkey](https://gitlab.com/screenkey/screenkey)
 
