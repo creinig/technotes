@@ -10,7 +10,12 @@
 ## Linux cmdline
 
 * [bat](https://github.com/sharkdp/bat)
+* [zsh](https://en.m.wikipedia.org/wiki/Z_shell) : my shell of choice
+* [eza](https://eza.rocks/) : a better replacement for ls(1)
+* [ripgrep](https://github.com/BurntSushi/ripgrep) : fast and powerful recursive grep(1). Note: [ugrep](https://github.com/Genivia/ugrep) also looks great.
 * [ugrep](https://github.com/Genivia/ugrep)
+* [fzf](https://github.com/junegunn/fzf) : fuzzy finder with great integration into bash/zsh and vim
+  * [video intro](https://www.youtube.com/watch?v=qgG5Jhi_Els) giving a great overview of fzf's capabilities
 * [mitmproxy](https://mitmproxy.org/) -- HTTP(S) proxy that allows sniffing & modification of traffic - plain and encrypted
 
 ## Linux general
