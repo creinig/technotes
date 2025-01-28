@@ -22,4 +22,4 @@ Only copy first 20 minutes of file: `ffmpeg -t 00:20:00 -i input.opus output.opu
 ## General / misc
 
 * Get my current public IP address: `curl -4 ifconfig.co` / `curl -6 ifconfig.co` 
-* Locally override the login shell of a LDAP user: 'sudo sss_override user-add myuser -s /bin/zsh && sudo systemctl restart sssd` (credits: [Chris Robison](https://serverfault.com/a/1143802/168093))
+* Locally override the login shell of a LDAP user: `sudo sss_override user-add myuser -s /bin/zsh && sudo systemctl restart sssd` (credits: [Chris Robison](https://serverfault.com/a/1143802/168093))
