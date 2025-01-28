@@ -1,3 +1,7 @@
+# Misc useful commandline snippets
+
+See also my [shell alias / function collection](https://github.com/creinig/dotfiles/blob/master/.shellrc)
+
 ## ffmpeg
 
 Only copy first 20 minutes of file: `ffmpeg -t 00:20:00 -i input.opus output.opus`
