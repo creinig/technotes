@@ -41,7 +41,8 @@ order by pg_database_size(t1.datname) desc;
 WITH schemas AS (
     SELECT
         nspname,
-        sum(pg_relation_size(pg_class.oid)) AS schemasize
+        sum(pg_relation_size(pg_class.oid)) AS schema_size,
+        sum(pg_total_relation_size(reltoastrelid)) AS toast_size
     FROM
         pg_class
         INNER JOIN pg_namespace ON relnamespace = pg_namespace.oid
@@ -50,11 +51,12 @@ WITH schemas AS (
 )
 SELECT
     nspname,
-    pg_size_pretty(schemasize)
+    pg_size_pretty(schema_size) as schema_size,
+    pg_size_pretty(toast_size) as toast_size
 FROM
     schemas
 ORDER BY
-    schemasize DESC;
+    (schema_size + toast_size) DESC;
 ```
 
 
