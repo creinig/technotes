@@ -84,7 +84,7 @@ from (
     FROM pg_stat_user_tables t, pg_class c, pg_namespace n
     where (n.oid = c.relnamespace)
       and (c.relkind = 'r')
-      -- and (c.relname in ('public'))
+      and (n.name in ('public'))
       and (t.schemaname = n.nspname)
       and (t.relname = c.relname)
 ) details
