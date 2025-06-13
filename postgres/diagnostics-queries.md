@@ -37,6 +37,34 @@ order by pg_database_size(t1.datname) desc;
 
 ## Schema sizes
 
+### Fast version (based on VACUUM ANALYZE statistics)
+
+```sql
+SELECT
+    n.nspname,
+    sum(c.relpages) table_bytes,
+    sum(t.relpages) toast_bytes,
+    sum(c.relpages + coalesce(t.relpages, 0)) total_bytes,
+    pg_size_pretty(sum(c.relpages) :: int8 * 8192) table_size,
+    pg_size_pretty(sum(t.relpages) :: int8 * 8192) toast_size,
+    pg_size_pretty(
+        sum(c.relpages + coalesce(t.relpages, 0)) :: int8 * 8192
+    ) total_size
+FROM
+    pg_class c
+    JOIN pg_namespace n ON n.oid = c.relnamespace
+    LEFT JOIN pg_class t ON c.reltoastrelid = t.oid
+WHERE 
+    (n.nspname <> 'pg_toast')
+    -- AND n.nspname like 'tenant_%'
+GROUP BY
+    n.nspname
+ORDER BY
+    sum(c.relpages + coalesce(t.relpages, 0)) DESC
+```
+
+### Accurate version (can be very expensive!)
+
 ```sql
 WITH schemas AS (
     SELECT
@@ -67,6 +95,14 @@ select * from pg_stat_database_conflicts where (datname = current_user);
 ```
 
 ## Table Size, Dead Rows & (Auto)Vacuum, partitioning safe
+
+### Fast version (sizes based on VACUUM ANALYZE statistics)
+
+```sql
+-- TODO - see "Schema Sizes" above for the required modifications
+```
+
+### Accurate version (can be very expensive!)
 
 ```sql
 SELECT schemaname as "schema", relbasename as "table", count(*) as npart,
