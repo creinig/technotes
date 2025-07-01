@@ -37,6 +37,13 @@ v                               |
 previous     choose   | select     next
 ```
 
-* :bd[elete] : close buffer
-* :ls : list buffers
+* `:bd[elete]` : close buffer
+* `:ls` : list buffers
+* `:e!` : reload buffer from file
 
+
+## Navigating Jumps
+
+* `C-o` / `C-i` : Jump back / forward through cursor positions
+* `gi` : jump to position of last insert mode use
+* `'.` / `<backtick>.` : jump to last edit
